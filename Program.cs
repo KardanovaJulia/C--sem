@@ -1,64 +1,64 @@
-﻿//Задача 19. Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+﻿//Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
 
-Console.Write("Введите пятизначное число: ");
-string? number = Console.ReadLine();
-
-void CheckingNumber(string number){
-  if (number[0]==number[4] || number[1]==number[4]){
-    Console.WriteLine($"Ваше число: {number} - ДА.");
+int Exponentiation(int numberA, int numberB)
+{
+  int result = 1;
+  for(int i=1; i <= numberB; i++)
+  {
+    result = result * numberA;
   }
-  else Console.WriteLine($"Ваше число: {number} - НЕТ.");
+    // int result = Math.Pow(numberA, numberB);
+    return result;
 }
 
-if (number!.Length == 5){
-  CheckingNumber(number);
-}
-else Console.WriteLine($"Введите правильное число");
+  Console.Write("Введите число: ");
+  int numberA = Convert.ToInt32(Console.ReadLine());
+  Console.Write("Введите степень: ");
+  int numberB = Convert.ToInt32(Console.ReadLine());
 
-//Задача 21. Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-
-
-int x1 = Coordinate("x", "A");
-int y1 = Coordinate("y", "A");
-int z1 = Coordinate("z", "A");
-int x2 = Coordinate("x", "B");
-int y2 = Coordinate("y", "B");
-int z2 = Coordinate("z", "B");
-
-int Coordinate(string coorName, string pointName)
-{
-    Console.Write($"Введите координату {coorName} точки {pointName}: ");
-    return Convert.ToInt16(Console.ReadLine());
-}
-
-double Decision(double x1, double x2, 
-                double y1, double y2, 
-                double z1, double z2){
-  return Math.Sqrt(Math.Pow((x2-x1), 2) + 
-                   Math.Pow((y2-y1), 2) + 
-                   Math.Pow((z2-z1), 2));
-}
-
-double segmentLength =  Math.Round (Decision(x1, x2, y1, y2, z1, z2), 2 );
-
-Console.WriteLine($"Длина отрезка  {segmentLength}");
+  int exponentiation = Exponentiation(numberA, numberB);
+Console.WriteLine($"{numberA} в степени {numberB} -> {exponentiation}");
 
 
-//Задача 23. Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
 
-void Squares(int n)
-{
-    Console.WriteLine($"{n} -> ");
+//Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
 
-    int i = 1;
-    while (i < n)
+Console.Write("Введите число: ");
+int numberN = Convert.ToInt32(Console.ReadLine());
+
+  int SumNumber(int numberN)
+  { 
+    int counter = Convert.ToString(numberN).Length;
+    int advance = 0;
+    int result = 0;
+
+    for (int i = 0; i < counter; i++)
     {
-        Console.Write($"{i * i * i}, ");
-        i++;    
+      advance = numberN - numberN % 10;
+      result = result + (numberN - advance);
+      numberN = numberN / 10;
     }
+   return result;
+  }
 
-    Console.WriteLine($"{n * n * n}. ");
+int sumNumber = SumNumber(numberN);
+Console.WriteLine($"{numberN} -> " + sumNumber);
+
+
+
+//Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+
+int [] numbers = new int[8];
+Console.Write("[");
+
+for (int i = 0; i < numbers.Length; i++)
+ {
+    numbers [i] = new Random().Next(0, 11);
+    Console.Write(" " + Method (i) + " ");
+ }
+Console.Write("]");
+
+int Method (int a)
+{
+    return numbers[a];
 }
-
-Squares (3);
-Squares (5);
